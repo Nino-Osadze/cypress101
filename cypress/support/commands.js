@@ -23,3 +23,27 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+
+
+// it('login', () => {
+//     // Navigate to url 'https://automationteststore.com'
+//     cy.visit('https://automationteststore.com')
+//     // click 'Login or register' button 
+//     cy.contains('Login or register').click()
+//     // fill out the login name and password
+//     // log_in_name : ninotest , password: test001 
+//     cy.get('#loginFrm_loginname').type('"ninotest"')
+//     cy.get('#loginFrm_password').type('test001')
+//     cy.get('#loginFrm > fieldset > .btn').click()
+
+//   }) 
+
+  Cypress.Commands.add('login', (username,password) =>{
+    cy.visit('https://automationteststore.com')
+    cy.contains('Login or register').click()
+    cy.get('#loginFrm_loginname').type(username)
+    cy.get('#loginFrm_password').type(password)
+    cy.get('#loginFrm > fieldset > .btn').click()
+  })
